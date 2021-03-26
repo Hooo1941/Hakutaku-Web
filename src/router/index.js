@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-03-21 19:18:39
  * @LastEditors: QiuJhao
- * @LastEditTime: 2021-03-21 19:33:05
+ * @LastEditTime: 2021-03-26 20:35:31
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -27,7 +27,12 @@ const routes = [
     path: '/device',
     name: 'Device',
     component: () => import(/* webpackChunkName: "device" */ '../views/DeviceTable.vue')
-  }
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import( /* webpackChunkName: "login" */ '../views/Login.vue')
+  },
 ]
 
 const router = new VueRouter({

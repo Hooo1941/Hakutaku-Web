@@ -1,18 +1,36 @@
+<!--
+ * @Date: 2021-03-26 19:55:39
+ * @LastEditors: QiuJhao
+ * @LastEditTime: 2021-03-26 20:44:31
+-->
+
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="box">
+    <p id="info">{{ info }}</p>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import Cookies from "js-cookie";
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
+  data() {
+    return {
+      info: null,
+    };
+  },
+  mounted() {
+    if (Cookies.get("jwt_token") == undefined) {
+      this.info = "没有登录，正在跳转...";
+    } else {
+      this.info = "登录成功，正在跳转...";
+    }
+  },
+};
 </script>
+
+<style scoped>
+#text
+{
+	font-size: 50px;
+}
+</style>
