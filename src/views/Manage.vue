@@ -1,14 +1,14 @@
 <!--
  * @Date: 2021-03-28 14:20:59
  * @LastEditors: QiuJhao
- * @LastEditTime: 2021-03-28 22:23:47
+ * @LastEditTime: 2021-03-28 23:39:08
 -->
 <template>
   <div id="manage">
     <p id="welcome">
       欢迎{{ name }}<br />你的部门是：{{ group }}<br />你的职务是：{{ role }}
     </p>
-    <a-button @click="goBorrow" type="primary">借出管理</a-button>
+    <a-button @click="goUser" type="primary" :disabled="dis">用户管理</a-button>
     <br />
     <br />
     <a-button @click="goDevice" type="primary" :disabled="dis"
@@ -16,7 +16,7 @@
     >
     <br />
     <br />
-    <a-button @click="goUser" type="primary" :disabled="dis">用户管理</a-button>
+    <a-button @click="goBorrow" type="primary">借出管理</a-button>
   </div>
 </template>
 
@@ -39,7 +39,7 @@ export default {
       this.axios({
         url: "/user/info",
         methods: "get",
-        headers: { "token": Cookies.get("jwt_token")},
+        headers: { token: Cookies.get("jwt_token") },
       }).then((res) => {
         console.log(res);
         if (res.data.code === 0) {
