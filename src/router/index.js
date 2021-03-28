@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-03-21 19:18:39
  * @LastEditors: QiuJhao
- * @LastEditTime: 2021-03-26 20:35:31
+ * @LastEditTime: 2021-03-28 22:09:50
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -24,9 +24,24 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
+    path: '/manage',
+    name: 'Manage',
+    component: () => import( /* webpackChunkName: "manage" */ '../views/Manage.vue')
+  },
+  {
     path: '/device',
     name: 'Device',
-    component: () => import(/* webpackChunkName: "device" */ '../views/DeviceTable.vue')
+    component: () => import(/* webpackChunkName: "device" */ '../views/Device.vue')
+  },
+  {
+    path: '/borrow',
+    name: 'Borrow',
+    component: () => import(/* webpackChunkName: "borrow" */ '../views/Borrow.vue')
+  },
+  {
+    path: '/user',
+    name: 'User',
+    component: () => import( /* webpackChunkName: "user" */ '../views/User.vue')
   },
   {
     path: '/login',

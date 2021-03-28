@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-03-26 19:55:39
  * @LastEditors: QiuJhao
- * @LastEditTime: 2021-03-26 20:44:31
+ * @LastEditTime: 2021-03-27 21:21:13
 -->
 
 <template>
@@ -20,9 +20,11 @@ export default {
   },
   mounted() {
     if (Cookies.get("jwt_token") == undefined) {
-      this.info = "没有登录，正在跳转...";
+      this.info = "没有登录，正在跳转..."
+      location.href = "/login"
     } else {
-      this.info = "登录成功，正在跳转...";
+      this.info = "登录成功，正在跳转..."
+      location.href = "/manage"
     }
   },
 };
