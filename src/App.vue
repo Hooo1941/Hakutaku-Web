@@ -1,16 +1,16 @@
 <!--
  * @Date: 2021-03-20 18:13:09
  * @LastEditors: QiuJhao
- * @LastEditTime: 2021-03-29 00:31:35
+ * @LastEditTime: 2021-03-31 10:24:23
 -->
 <template>
   <a-layout id="layout">
-    <a-layout-sider v-model="collapsed" :trigger="null" collapsible>
+    <a-layout-sider v-model="collapsed" collapsible breakpoint="lg">
       <div class="logo"><p id="logotext">白泽</p></div>
       <a-menu
         theme="dark"
         :inlineIndent="12"
-        :defaultSelectedKeys="[$route.path]"
+        :selectedKeys="[$route.path]"
         mode="inline"
         :inline-collapsed="collapsed"
         @click="menuClick"
@@ -24,19 +24,13 @@
       </a-menu>
     </a-layout-sider>
     <a-layout>
-      <a-layout-header style="background: #fff; padding: 0">
-        <a-icon
-          class="trigger"
-          :type="collapsed ? 'menu-unfold' : 'menu-fold'"
-          @click="() => (collapsed = !collapsed)"
-        />
-      </a-layout-header>
       <a-layout-content
         :style="{
           margin: '24px 16px',
           padding: '24px',
           background: '#fff',
           minHeight: '280px',
+          overflow: 'auto',
         }"
       >
         <router-view />

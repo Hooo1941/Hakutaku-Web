@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-03-28 14:20:59
  * @LastEditors: QiuJhao
- * @LastEditTime: 2021-03-28 23:39:08
+ * @LastEditTime: 2021-03-31 10:46:31
 -->
 <template>
   <div id="manage">
@@ -63,13 +63,13 @@ export default {
       });
     },
     goDevice: function () {
-      location.href = "/Device";
+      location.href = "/device";
     },
     goBorrow: function () {
-      location.href = "/Borrow";
+      location.href = "/borrow";
     },
     goUser: function () {
-      location.href = "/User";
+      location.href = "/user";
     },
   },
 };

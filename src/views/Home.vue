@@ -20,19 +20,18 @@ export default {
   },
   mounted() {
     if (Cookies.get("jwt_token") == undefined) {
-      this.info = "没有登录，正在跳转..."
-      location.href = "/login"
+      this.info = "没有登录，正在跳转...";
+      location.href = "/login";
     } else {
-      this.info = "登录成功，正在跳转..."
-      location.href = "/manage"
+      this.info = "登录成功，正在跳转...";
+      location.href = "/manage";
     }
   },
 };
 </script>
 
 <style scoped>
-#text
-{
-	font-size: 50px;
+#text {
+  font-size: 50px;
 }
 </style>

@@ -5,25 +5,22 @@
 -->
 <template>
   <div id="login">
-    <p id=text>正在跳转...</p>
+    <p id="text">正在跳转...</p>
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'login',
+  name: "login",
   mounted() {
     location.href = "http://127.0.0.1:7070/api/v1/sso/login";
   },
-  methods: {
-  },
-}
+  methods: {},
+};
 </script>
 
 <style scoped>
-#text
-{
-	font-size: 50px;
+#text {
+  font-size: 50px;
 }
 </style>
