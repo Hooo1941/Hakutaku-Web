@@ -26,9 +26,7 @@
         v-model="checkedList"
         :options="plainOptions"
       />
-      <a-button type="primary" @click="search" :disabled="role == 3">
-        搜索
-      </a-button>
+      <a-button type="primary" @click="search"> 搜索 </a-button>
     </div>
     <br />
     <div id="table">
@@ -46,19 +44,34 @@ const columns = [
     key: "ID",
   },
   {
-    title: "姓名",
-    dataIndex: "Name",
-    key: "Name",
+    title: "设备号",
+    dataIndex: "DeviceID",
+    key: "DeviceID",
   },
   {
-    title: "部门",
-    dataIndex: "Group",
-    key: "Group",
+    title: "借出者",
+    dataIndex: "FromID",
+    key: "FromID",
   },
   {
-    title: "职务",
-    dataIndex: "Role",
-    key: "Role",
+    title: "借入者",
+    dataIndex: "ToID",
+    key: "ToID",
+  },
+  {
+    title: "借出时间",
+    dataIndex: "BorrowTime",
+    key: "BorrowTime",
+  },
+  {
+    title: "应还时间",
+    dataIndex: "ScheduleTime",
+    key: "ScheduleTime",
+  },
+  {
+    title: "是否归还",
+    dataIndex: "Returned",
+    key: "Returned",
   },
 ];
 
@@ -139,8 +152,48 @@ export default {
         headers: { token: Cookies.get("jwt_token") },
         data: params,
       }).then((res) => {
+        if (res.data.body == null) {
+          this.tablelist = [];
+          this.loading = false;
+          return;
+        }
+        var len = res.data.body.length;
+        for (let i = 0; i < len; i++) {
+          if (res.data.body[i].Returned === true)
+            res.data.body[i].Returned = "是";
+          else res.data.body[i].Returned = "否";
+          this.axios({
+            url: "/user/name",
+            method: "post",
+            headers: { token: Cookies.get("jwt_token") },
+            data: {
+              uid: res.data.body[i].FromID,
+            },
+          }).then((ret) => {
+            res.data.body[i].FromID = ret.data.body;
+          });
+          this.axios({
+            url: "/user/name",
+            method: "post",
+            headers: { token: Cookies.get("jwt_token") },
+            data: {
+              uid: res.data.body[i].ToID,
+            },
+          }).then((ret) => {
+            res.data.body[i].ToID = ret.data.body;
+          });
+          var blen = res.data.body[i].BorrowTime.length;
+          res.data.body[i].BorrowTime = res.data.body[i].BorrowTime.substring(
+            0,
+            blen - 6
+          );
+          var slen = res.data.body[i].ScheduleTime.length;
+          res.data.body[i].ScheduleTime = res.data.body[
+            i
+          ].ScheduleTime.substring(0, slen - 6);
+        }
         console.log(res);
-        this.tablelist = res.data.body
+        this.tablelist = res.data.body;
         this.loading = false;
       });
     },
