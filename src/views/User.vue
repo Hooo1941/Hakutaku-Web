@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-03-28 14:20:59
  * @LastEditors: QiuJhao
- * @LastEditTime: 2021-04-03 22:17:21
+ * @LastEditTime: 2021-04-06 21:02:19
 -->
 <template>
   <div id="page">
@@ -125,6 +125,8 @@ export default {
           console.log(res);
         }
         this.tablelist = res.data.body;
+        this.tablelist.splice(this.tablelist.findIndex(e => e.id === 0), 1)
+        console.log(res);
         this.loading = false;
       });
     },

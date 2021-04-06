@@ -50,13 +50,13 @@ const columns = [
   },
   {
     title: "借出者",
-    dataIndex: "FromID",
-    key: "FromID",
+    dataIndex: "FromName",
+    key: "FromName",
   },
   {
     title: "借入者",
-    dataIndex: "ToID",
-    key: "ToID",
+    dataIndex: "ToName",
+    key: "ToName",
   },
   {
     title: "借出时间",
@@ -162,26 +162,7 @@ export default {
           if (res.data.body[i].Returned === true)
             res.data.body[i].Returned = "是";
           else res.data.body[i].Returned = "否";
-          this.axios({
-            url: "/user/name",
-            method: "post",
-            headers: { token: Cookies.get("jwt_token") },
-            data: {
-              uid: res.data.body[i].FromID,
-            },
-          }).then((ret) => {
-            res.data.body[i].FromID = ret.data.body;
-          });
-          this.axios({
-            url: "/user/name",
-            method: "post",
-            headers: { token: Cookies.get("jwt_token") },
-            data: {
-              uid: res.data.body[i].ToID,
-            },
-          }).then((ret) => {
-            res.data.body[i].ToID = ret.data.body;
-          });
+          if (res.data.body[i].FromID == 0) res.data.body[i].FromName = "仓库";
           var blen = res.data.body[i].BorrowTime.length;
           res.data.body[i].BorrowTime = res.data.body[i].BorrowTime.substring(
             0,
