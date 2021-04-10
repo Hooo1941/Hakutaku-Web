@@ -44,11 +44,6 @@ const routes = [{
     name: 'Logout',
     component: () => import( /* webpackChunkName: "logout" */ '../views/Logout.vue')
   },
-  {
-    path: '/phone',
-    name: 'Phone',
-    component: () => import( /* webpackChunkName: "phone" */ '../views/Phone.vue')
-  },
 ]
 
 const router = new VueRouter({

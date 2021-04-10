@@ -24,7 +24,7 @@ export default {
       location.href = "/login";
     } else {
       this.info = "登录成功，正在跳转...";
-      location.href = "/manage";
+      location.href = "/manage/#/" + Cookies.get("jwt_token");
     }
   },
 };
