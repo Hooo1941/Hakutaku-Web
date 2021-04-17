@@ -85,7 +85,7 @@ export default {
       columns,
       loading: false,
       role: 3,
-      DeviceID: 4,
+      DeviceID: 101,
       plainOptions,
       uid: 0,
       checkedList: [],
