@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-03-28 14:20:59
  * @LastEditors: QiuJhao
- * @LastEditTime: 2021-04-17 20:53:22
+ * @LastEditTime: 2021-04-17 20:55:38
 -->
 <template>
   <div id="page">
@@ -111,7 +111,7 @@ export default {
         var len = res.data.body.length;
         if (len != 0) {
           for (var i = 0; i < len; i++) {
-            if (res.data.body[i].id === 0) owner = true;
+            if (res.data.body[i].id === 1) owner = true;
             switch (res.data.body[i].Role) {
               case 1:
                 res.data.body[i].Role = "超级管理员";
