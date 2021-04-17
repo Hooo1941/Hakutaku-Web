@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-03-28 14:20:59
  * @LastEditors: QiuJhao
- * @LastEditTime: 2021-04-06 21:02:19
+ * @LastEditTime: 2021-04-17 20:53:22
 -->
 <template>
   <div id="page">
@@ -106,10 +106,12 @@ export default {
           groups: this.searchlist,
         },
       }).then((res) => {
+        var owner = false;
         console.log(res);
         var len = res.data.body.length;
         if (len != 0) {
           for (var i = 0; i < len; i++) {
+            if (res.data.body[i].id === 0) owner = true;
             switch (res.data.body[i].Role) {
               case 1:
                 res.data.body[i].Role = "超级管理员";
@@ -125,7 +127,11 @@ export default {
           console.log(res);
         }
         this.tablelist = res.data.body;
-        this.tablelist.splice(this.tablelist.findIndex(e => e.id === 0), 1)
+        if (owner === true)
+          this.tablelist.splice(
+            this.tablelist.findIndex((e) => e.id === 0),
+            1
+          );
         console.log(res);
         this.loading = false;
       });
