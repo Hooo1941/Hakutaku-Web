@@ -104,6 +104,7 @@ export default {
         console.log(res);
         if (res.data.code === 0) {
           this.role = res.data.body.Role;
+          this.uid = res.data.body.UID;
         }
       });
       this.axios({
@@ -138,6 +139,7 @@ export default {
     search() {
       this.loading = true;
       let params = {};
+      if (this.role === 3) params.uid = this.uid;
       if (this.DeviceID != undefined) params.DeviceID = this.DeviceID;
       if (this.uid != 0) {
         if (this.checkedList.indexOf("借入") > -1)
