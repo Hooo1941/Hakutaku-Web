@@ -162,7 +162,7 @@ export default {
           if (res.data.body[i].Returned === true)
             res.data.body[i].Returned = "是";
           else res.data.body[i].Returned = "否";
-          if (res.data.body[i].FromID == 0) res.data.body[i].FromName = "仓库";
+          if (res.data.body[i].FromID == 1) res.data.body[i].FromName = "仓库";
           var blen = res.data.body[i].BorrowTime.length;
           res.data.body[i].BorrowTime = res.data.body[i].BorrowTime.substring(
             0,
