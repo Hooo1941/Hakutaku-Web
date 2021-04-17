@@ -1,7 +1,7 @@
 <!--
  * @Date: 2021-03-28 14:20:59
  * @LastEditors: QiuJhao
- * @LastEditTime: 2021-04-17 20:55:38
+ * @LastEditTime: 2021-04-17 20:58:12
 -->
 <template>
   <div id="page">
@@ -129,7 +129,7 @@ export default {
         this.tablelist = res.data.body;
         if (owner === true)
           this.tablelist.splice(
-            this.tablelist.findIndex((e) => e.id === 0),
+            this.tablelist.findIndex((e) => e.id === 1),
             1
           );
         console.log(res);
